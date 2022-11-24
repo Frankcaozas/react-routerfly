@@ -10,20 +10,13 @@ import { router } from './router'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-<Float>
-        <>
-                <RouterProvider router={router} />
-                <metadataContext.Consumer>
-                        {(context) => {
-                                return (<FloatContainer >
-                                        <TheImage  />
-                                 </FloatContainer>)
-                        }
-                        }
+        <Float>
+                <>
+                        <RouterProvider router={router} />
+                        <metadataContext.Consumer>
+                                {() => {return (<FloatContainer ><TheImage /></FloatContainer>)}}
+                        </metadataContext.Consumer>
+                </>
 
-                </metadataContext.Consumer>
-
-        </>
-
-</Float>
+        </Float>
 )

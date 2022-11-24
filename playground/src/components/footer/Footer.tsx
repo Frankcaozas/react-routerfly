@@ -1,5 +1,4 @@
 import { useDark } from '../../hooks/useDark';
-import './App.css';
 const footer = () => {
   const setDark = useDark()
   const toggleDark = () => {
