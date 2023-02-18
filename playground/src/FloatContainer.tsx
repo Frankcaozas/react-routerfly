@@ -15,7 +15,10 @@ const FloatContainer = (props: any) => {
   if(!rect || !proxyEl){
     style = {
       ...fixed,
-      display: 'none'
+      // display: 'none'
+      opacity: 0,
+      transform: 'translateY(-100px)',
+      pointerEvents: 'none'
     }
   }else{
     style = {
