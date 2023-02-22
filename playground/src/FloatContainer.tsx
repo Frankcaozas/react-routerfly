@@ -1,18 +1,18 @@
-import React, { useContext, useEffect, useState, CSSProperties } from 'react';
+import React, { useContext, useEffect, useState, CSSProperties, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { metadataContext } from './Float';
 
-
-
 const FloatContainer = (props: any) => {
-  const { metadata, proxyEl, setProxyEl } = useContext(metadataContext)
+  const { metadata, proxyEl, setProxyEl, isLanded, setIsLanded } = useContext(metadataContext)
   const [rect, setReact] = useState<DOMRect>()
+  const containerRef = useRef(null)
   const scrollY = window.scrollY
   const fixed: CSSProperties = {
     transition: 'all .5s ease-in-out',
     position: 'fixed'
   }
   let style: CSSProperties
-  if(!rect || !proxyEl){
+  if (!rect || !proxyEl) {
     style = {
       ...fixed,
       // display: 'none'
@@ -20,7 +20,7 @@ const FloatContainer = (props: any) => {
       transform: 'translateY(-100px)',
       pointerEvents: 'none'
     }
-  }else{
+  } else {
     style = {
       ...fixed,
       left: `${rect.left ?? 0}px`,
@@ -51,9 +51,19 @@ const FloatContainer = (props: any) => {
       // observer.disconnect();
     }
   }, [props])
+  const children = React.cloneElement(props.children, { ...metadata, id: 1 })
   return (
-    <div style={style}>
-      {React.cloneElement(props.children, { ...metadata })}
+    <div
+      ref={containerRef}
+      style={style}
+      onTransitionEnd={async () => {
+        // await Promise.resolve().then(() => {setIsLanded(true)})
+        
+        console.log('landed')
+      }}>
+      {!isLanded ?
+        createPortal( children, isLanded? proxyEl : containerRef.current)
+        : children} 
     </div>
   );
 };
