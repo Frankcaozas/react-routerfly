@@ -1,17 +1,9 @@
-<<<<<<< HEAD:playground/src/FloatContainer.tsx
 import React, { useContext, useEffect, useState, CSSProperties, useRef } from 'react';
-=======
-import React, { CSSProperties, memo, useContext, useEffect, useRef, useState } from 'react';
->>>>>>> 111de83 (chore: refactor the file structure):src/components/FloatContainer.tsx
 import { createPortal } from 'react-dom';
 import { metadataContext } from './Float';
 import KeepAlive from './KeepAlive/KeepAlive';
 
-<<<<<<< HEAD:playground/src/FloatContainer.tsx
-const FloatContainer = (props: any) => {
-=======
 export const FloatContainer = (props: any) => {
->>>>>>> 111de83 (chore: refactor the file structure):src/components/FloatContainer.tsx
   const { metadata, proxyEl, setProxyEl, isLanded, setIsLanded } = useContext(metadataContext)
   const [rect, setReact] = useState<DOMRect>()
   const containerRef = useRef(null)
@@ -60,21 +52,7 @@ export const FloatContainer = (props: any) => {
       // observer.disconnect();
     }
   }, [props])
-<<<<<<< HEAD:playground/src/FloatContainer.tsx
-  const children = React.cloneElement(props.children, { ...metadata, id: 1 })
-  return (
-    <div
-      ref={containerRef}
-      style={style}
-      onTransitionEnd={async () => {
-        // await Promise.resolve().then(() => {setIsLanded(true)})
-        
-        console.log('landed')
-      }}>
-      {!isLanded ?
-        createPortal( children, isLanded? proxyEl : containerRef.current)
-        : children} 
-=======
+
   const children = React.cloneElement(props.children, { ...metadata})
 
   return (
@@ -99,7 +77,6 @@ export const FloatContainer = (props: any) => {
         <KeepAlive id={1}>{children}</KeepAlive>
         // children 
         } 
->>>>>>> 111de83 (chore: refactor the file structure):src/components/FloatContainer.tsx
     </div>
   );
 };
