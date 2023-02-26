@@ -1,11 +1,19 @@
 {
   "name": "react-routerfly",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "moudle": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "pkgroll",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,11 +23,12 @@
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
+    "@types/node": "^18.7.23",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "pkgroll": "^1.9.0",
     "typescript": "^4.6.4",
-    "vite": "^3.1.0",
-    "@types/node": "^18.7.23"
+    "vite": "^3.1.0"
   }
 }

@@ -9,9 +9,8 @@ const TheImage = (props: any) => {
   const [cnt, setCnt] = useState(1)
   const inc = () => { setCnt(pre => pre + 1) }
   return (
-    <div {...props} overflow-hidden
-   
-    >
+    <>
+    <div {...props} relative>
       {a ? <img onClick={
         clickHandler
       }
@@ -20,8 +19,18 @@ const TheImage = (props: any) => {
           clickHandler
         }
           src="https://images.unsplash.com/photo-1620315808304-66597517f188?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=512&ixid=MnwxfDB8MXxyYW5kb218MHw5NDczNDU2Nnx8fHx8fHwxNjQ4OTMyNTE4&ixlib=rb-1.2.1&q=80&w=512" alt="" />}
-
+      <span
+        className='absolute bottom-0 left-1/2 text-white'
+        onClick={e => {
+          e.stopPropagation()
+          setCnt(cnt + 1)
+        }}
+      >
+        {cnt}
+      </span>
     </div>
+    
+    </>
   );
 };
 

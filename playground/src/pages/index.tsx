@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router';
 import Footer from '../components/footer/Footer';
-import FloatProxy from '../FloatProxy';
+import {FloatProxy} from '../../../src/';
 const IndexPage = () => {
   const navigate = useNavigate()
   const goFoo = () => {

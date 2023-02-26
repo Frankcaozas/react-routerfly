@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import FloatProxy from '../FloatProxy';
+import {FloatProxy} from '../../../src/';
 
 const Foo = () => {
   const nav = useNavigate()
