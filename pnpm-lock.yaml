@@ -12,13 +12,11 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       react-router: ^6.4.2
-      react-router-dom: ^6.4.2
       typescript: ^4.6.4
     dependencies:
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-router: registry.npmmirror.com/react-router/6.4.2_react@18.2.0
-      react-router-dom: registry.npmmirror.com/react-router-dom/6.4.2_biqbaboplfbrettd7655fr4n2y
     devDependencies:
       '@types/node': registry.npmmirror.com/@types/node/18.11.5
       '@types/react': registry.npmmirror.com/@types/react/18.0.23

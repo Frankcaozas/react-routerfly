@@ -1,7 +1,7 @@
 import { memo, useContext, useEffect, useRef } from 'react';
 import { metadataContext } from './Float';
 
-export const FloatProxy = (props: any) => {
+export const FloatProxy = memo((props: any) => {
   const { children, ...attr } = props
   // console.log('style: '+style);
   const { setMetadata, setPrxyEl, proxyEl, isLanded, setIsLanded } = useContext(metadataContext)
@@ -13,21 +13,16 @@ export const FloatProxy = (props: any) => {
   useEffect(() => {
     setMetadata(attr)
     setPrxyEl(el.current)
-    console.log(attr)
   }, [props])
 
   useEffect(() => {
     const lifOff = () => {
       Promise.resolve().then(() => {
         setIsLanded(false)
-        console.log('liftoff')
       })
       setPrxyEl(undefined)
     }
     return () => {
-      // setIsLanded(false)
-      // console.log('liftoff')
-      // setPrxyEl(undefined)
       lifOff()
     }
   }, [])
@@ -38,5 +33,5 @@ export const FloatProxy = (props: any) => {
 
     </div>
   );
-};
+});
 

@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useState } from 'react';
+import { createContext, memo, ReactElement, useState } from 'react';
 import { AliveScope } from './KeepAlive/AliveScope';
 
 
@@ -6,7 +6,7 @@ import { AliveScope } from './KeepAlive/AliveScope';
 export const metadataContext = createContext<any>({
 
 })
-export const Float = (props: { children: ReactElement }) => {
+export const Float = memo((props: { children: ReactElement }) => {
   const [metadata, setMetadata] = useState<any>()
   const [proxyEl, setPrxyEl] = useState<HTMLElement>()
   const [isLanded, setIsLanded] = useState<boolean>(true)
@@ -16,13 +16,9 @@ export const Float = (props: { children: ReactElement }) => {
       metadata, setMetadata,
       proxyEl, setPrxyEl,
       isLanded, setIsLanded
-    }}>
-      <AliveScope>
-        {props.children}
-      </AliveScope>
-
-
+    }}>  
+        <AliveScope>{props.children}</AliveScope>
     </metadataContext.Provider>
   );
-};
+});
 

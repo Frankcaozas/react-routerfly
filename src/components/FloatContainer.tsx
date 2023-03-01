@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useState, CSSProperties, useRef } from 'react';
+import React, { useContext, useEffect, useState, CSSProperties, useRef, memo } from 'react';
 import { createPortal } from 'react-dom';
+import { useLocation } from 'react-router';
 import { metadataContext } from './Float';
 import KeepAlive from './KeepAlive/KeepAlive';
 
-export const FloatContainer = (props: any) => {
-  const { metadata, proxyEl, setProxyEl, isLanded, setIsLanded } = useContext(metadataContext)
+export const FloatContainer = memo((props: any) => {
+  const location = useLocation()
+  const { metadata, proxyEl, isLanded, setIsLanded } = useContext(metadataContext)
+  console.log(metadata)
   const [rect, setReact] = useState<DOMRect>()
   const containerRef = useRef(null)
   const scrollY = window.scrollY
@@ -16,10 +19,8 @@ export const FloatContainer = (props: any) => {
   if (!rect || !proxyEl) {
     style = {
       ...fixed,
-      // display: 'none'
-      opacity: 0,
-      transform: 'translateY(-100px)',
-      pointerEvents: 'none'
+      display: 'none',
+      zIndex: -1
     }
   } else {
     style = {
@@ -28,56 +29,36 @@ export const FloatContainer = (props: any) => {
       top: `${rect.top ?? 0}px`,
     }
   }
-  // style = {
-  //   transition: 'all .5s ease-in-out',
-  //   position: 'fixed',
-  //   left: `${rect?.left ?? 0}px`,
-  //   top: `${rect?.top ?? 0}px`,
-  // }
-  // console.log(style);
-
-  // console.log(style);
   const update = () => {
     setReact(proxyEl?.getBoundingClientRect())
+    console.log('rect update')
   }
   useEffect(() => {
-
-    // const observer = new MutationObserver(update);
-    // const config = { attributes: true, childList: true, subtree: true };
-    // observer.observe(document.body,config);
-    window.addEventListener('resize', update)
+    // window.addEventListener('resize', update)
     update()
     return () => {
-      window.removeEventListener('resize', update)
-      // observer.disconnect();
+      // window.removeEventListener('resize', update)
     }
-  }, [props])
+  }, [metadata, location.pathname])
 
-  const children = React.cloneElement(props.children, { ...metadata})
+  const children = React.cloneElement(props.children, { ...metadata })
 
   return (
     <div
       {...metadata}
-      ref={containerRef}
       style={{
         ...style,
         ...metadata?.style
       }}
-      onTransitionEnd={ async() => {
-        // await Promise.resolve().then(() => {setIsLanded(true)})
-        setIsLanded(true)
-        console.log('landed')
+      onTransitionEnd={async () => {
+        await Promise.resolve().then(() => { setIsLanded(true) })
       }}>
-      {!isLanded ?
-        createPortal(
-        <KeepAlive id={1}>{children}</KeepAlive> 
-          // children
-        , isLanded ?  proxyEl : containerRef.current)
-        : 
-        <KeepAlive id={1}>{children}</KeepAlive>
-        // children 
-        } 
+      {(isLanded && proxyEl) ?
+        createPortal(<KeepAlive id={1}>{children}</KeepAlive>, proxyEl)
+        : <KeepAlive id={1}>{children}</KeepAlive>
+
+      }
     </div>
   );
-};
+});
 
