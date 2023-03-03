@@ -6,6 +6,7 @@ const Bar = () => {
     nav('/')
   }
 
+
   return (
     <div p='x-10 y-20' un-text="center gray-700 dark:gray-200 ma"  >
       <h1>bar page</h1>

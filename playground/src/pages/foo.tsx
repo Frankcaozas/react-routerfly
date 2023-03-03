@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import {FloatProxy} from '../../../src/';
+import TheImage from '../components/TheImage';
 
 const Foo = () => {
   const nav = useNavigate()
@@ -9,12 +10,12 @@ const Foo = () => {
   }
   const [size, setSize] = useState(100)
   const enlarge = () => {
-    setSize(pre => pre + 10)
+    setSize(pre => pre + 30)
   }
   const reset = () => {
     setSize(100)
   }
-  console.log(size);
+  // console.log(size);
   const style = {
     width: size + 'px',
     height: size + 'px',
@@ -33,29 +34,30 @@ const Foo = () => {
         reset
       </button>
 
-      <div flex='~ col-reverse sm:row gap6' items-center>
-        <FloatProxy style={style} transition-all
-          rounded="1/2" overflow-hidden text-center />
+      <div flex='~ col sm:row gap6' items-center>
+        <FloatProxy style={style} 
+          port={'1'}
+          rounded="1/2" overflow-hidden text-center >
+            <TheImage />
+          </FloatProxy>
         <p flex-1 text-left>
           No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
         </p>
       </div>
-      <p flex-1 text-left>
-          No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-        </p>
+      
+      <div flex='~ col sm:row gap6' items-center>
+        
         <p flex-1 text-left>
           No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
         </p>
-        <p flex-1 text-left>
-          No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-        </p>
-        <p flex-1 text-left>
-          No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-        </p>
-
-        <p flex-1 text-left>
-          No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-        </p>
+        <FloatProxy style={style} 
+          port={'2'}
+          rounded="1/2" overflow-hidden text-center >
+            <TheImage />
+          </FloatProxy>
+      </div>
+      
+        
     </div>
 
   );
