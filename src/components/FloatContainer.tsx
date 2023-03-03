@@ -5,14 +5,12 @@ import { metadataContext } from './Float';
 import KeepAlive from './KeepAlive/KeepAlive';
 
 export const FloatContainer = memo((props: any) => {
-  const location = useLocation()
   const { metadata, proxyEl, isLanded, setIsLanded } = useContext(metadataContext)
   console.log(metadata)
   const [rect, setReact] = useState<DOMRect>()
-  const containerRef = useRef(null)
   const scrollY = window.scrollY
   const fixed: CSSProperties = {
-    transition: 'all .5s ease-in-out',
+    transition: 'all .8s ease-in-out',
     position: 'fixed'
   }
   let style: CSSProperties
@@ -34,12 +32,12 @@ export const FloatContainer = memo((props: any) => {
     console.log('rect update')
   }
   useEffect(() => {
-    // window.addEventListener('resize', update)
+    window.addEventListener('resize', update)
     update()
     return () => {
-      // window.removeEventListener('resize', update)
+      window.removeEventListener('resize', update)
     }
-  }, [metadata, location.pathname])
+  }, [metadata, window.location.pathname])
 
   const children = React.cloneElement(props.children, { ...metadata })
 

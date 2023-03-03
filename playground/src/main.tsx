@@ -4,7 +4,7 @@ import { RouterProvider } from 'react-router-dom'
 import 'uno.css'
 import TheImage from './components/TheImage'
 import { router } from './router'
-import { metadataContext, Float } from '../../src/'
+import { Float } from '../../src/'
 import { FloatContainer } from '../../src/'
 
 
