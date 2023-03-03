@@ -6,36 +6,44 @@ import KeepAlive from './KeepAlive/KeepAlive';
 
 export const FloatContainer = memo((props: any) => {
   const { metadata, proxyEl, isLanded, setIsLanded } = useContext(metadataContext)
-  console.log(metadata)
+  // console.log(metadata)
   const [rect, setReact] = useState<DOMRect>()
-  const scrollY = window.scrollY
-  const fixed: CSSProperties = {
-    transition: 'all .8s ease-in-out',
-    position: 'fixed'
+  
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop
+  const scrollLeft = document.body.scrollLeft || document.documentElement.scrollLeft
+  
+  let style: CSSProperties = {
+    position: 'absolute',
+    left: (rect?.left ?? 0) + scrollLeft + 'px',
+    top: (rect?.top ?? 0) + scrollTop + 'px',
+    width: `${rect?.width}px`,
+    height: `${rect?.height}px`,
   }
-  let style: CSSProperties
   if (!rect || !proxyEl) {
     style = {
-      ...fixed,
+      ...style,
+      zIndex: -1,
       display: 'none',
-      zIndex: -1
-    }
-  } else {
-    style = {
-      ...fixed,
-      left: `${rect.left ?? 0}px`,
-      top: `${rect.top ?? 0}px`,
     }
   }
+  if (isLanded) {
+    style.display = 'none'
+  } else {
+    style = {
+      ...style,
+      transition: 'all .8s ease-in-out'
+    }
+  }
+
   const update = () => {
     setReact(proxyEl?.getBoundingClientRect())
     console.log('rect update')
   }
   useEffect(() => {
-    window.addEventListener('resize', update)
+    // window.addEventListener('resize', update)
     update()
     return () => {
-      window.removeEventListener('resize', update)
+      // window.removeEventListener('resize', update)
     }
   }, [metadata, window.location.pathname])
 
