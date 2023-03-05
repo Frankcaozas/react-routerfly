@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Float>
       <>
-      {/* {<FloatContainer ><TheImage /></FloatContainer>} */}
+      {/* {<FloatContainer port={1}><TheImage/></FloatContainer>} */}
       <Outlet />
       </>
     </Float>

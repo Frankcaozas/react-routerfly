@@ -1,8 +1,8 @@
-import { FloatProxy } from "./components/FloatProxy";
 import { FloatContainer } from "./components/FloatContainer";
-export  {Float} from './components/Float'
-export {FloatContainer}
-export {FloatProxy}
+import { FloatProxy } from "./components/FloatProxy";
+export { RouterFlyCarrier as Float } from './components/Float';
+export { FloatContainer };
+export { FloatProxy };
 
 
 

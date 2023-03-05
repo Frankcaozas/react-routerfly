@@ -16,9 +16,9 @@ const IndexPage = () => {
         <FloatProxy port={'1'} overflow-hidden w-50 h-50 rounded-xl mx-a>
           <TheImage />
         </FloatProxy>
-        <FloatProxy port={'2'} overflow-hidden w-50 h-50 rounded-xl mx-a>
+        {/* <FloatProxy port={'2'} overflow-hidden w-50 h-50 rounded-xl mx-a>
           <TheImage />
-        </FloatProxy>
+        </FloatProxy> */}
       </div>
 
 
