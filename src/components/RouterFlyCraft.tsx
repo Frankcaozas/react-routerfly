@@ -44,36 +44,21 @@ export const RouterFlyCraft = (props: any) => {
       transition: 'all 1s ease-in-out'
     }
   }
-  // style = {
-  //   ...style,
-  //   transition: 'all 1s ease-in-out'
-  // }
-  // console.log(style.left, style.top)
-  // console.log(port,isLanded, el )
+
   const update = () => {
     Promise.resolve().then(() => { })
     setReact(el?.getBoundingClientRect())
-    // console.log('rect update')
+    
   }
   useEffect(() => {
-    // window.addEventListener('resize', update)
     update()
-    return () => {
-      // window.removeEventListener('resize', update)
-    }
   }, [metadata[port], window.location.pathname])
-
-  // console.log(comp[port], component, component.props)
-  const children = React.cloneElement(component, { ...metadata[port] })
-  // console.log(children);
-  const portal = (isLanded[port] && el !== null)
 
   return (
     <div
       {...metadata[port]}
       style={{
-        ...style,
-        // ...(metadata[port].style)
+        ...style
       }}
       onTransitionEnd={async () => {
         await Promise.resolve().then(() => {
@@ -82,12 +67,10 @@ export const RouterFlyCraft = (props: any) => {
             pre[port] = true
             return [...pre]
           })
-          // instance.isLanded = true
-          // updatePortMap(port, instance)
         })
       }}
     >
-      {/* {children} */}
+      
       {(isLanded[port] && el) ?
         createPortal(
           <KeepAlive id={port}>{component}</KeepAlive>
