@@ -1,4 +1,4 @@
-import  transformerAttributifyJsx from "@unocss/transformer-attributify-jsx";
+import transformerAttributifyJsx from '@unocss/transformer-attributify-jsx'
 import {
   defineConfig,
   presetAttributify,

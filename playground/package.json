@@ -22,6 +22,7 @@
     "@types/react-dom": "^18.0.6",
     "@unocss/preset-attributify": "^0.45.30",
     "@unocss/reset": "^0.39.0",
+    "@unocss/transformer-attributify-jsx": "^0.50.4",
     "@vitejs/plugin-react": "^2.1.0",
     "eslint": "^8.26.0",
     "typescript": "^4.6.4",

@@ -32,6 +32,7 @@ importers:
       '@types/react-dom': ^18.0.6
       '@unocss/preset-attributify': ^0.45.30
       '@unocss/reset': ^0.39.0
+      '@unocss/transformer-attributify-jsx': ^0.50.4
       '@vitejs/plugin-react': ^2.1.0
       eslint: ^8.26.0
       react: ^18.2.0
@@ -54,6 +55,7 @@ importers:
       '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.7
       '@unocss/preset-attributify': registry.npmmirror.com/@unocss/preset-attributify/0.45.30
       '@unocss/reset': registry.npmmirror.com/@unocss/reset/0.39.3
+      '@unocss/transformer-attributify-jsx': registry.npmmirror.com/@unocss/transformer-attributify-jsx/0.50.4
       '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/2.1.0_vite@3.1.8
       eslint: registry.npmmirror.com/eslint/8.34.0
       typescript: registry.npmmirror.com/typescript/4.8.4
@@ -1432,6 +1434,12 @@ packages:
     version: 0.45.30
     dev: true
 
+  registry.npmmirror.com/@unocss/core/0.50.4:
+    resolution: {integrity: sha512-k/8CdnO4w7f+QdvCpS3U5y6xApC4odiErkBKCCaGgBqOWkuTSL92TiBnffSEA2WepGm1+Mv4urIk20ocKYxbUQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/core/-/core-0.50.4.tgz}
+    name: '@unocss/core'
+    version: 0.50.4
+    dev: true
+
   registry.npmmirror.com/@unocss/inspector/0.39.3:
     resolution: {integrity: sha512-j7U04I07sqK63+3cA7oju/hoGOkdN+/hAwGYkCgWGNj+HwxiU7TTEVg0qZ1FAUU/GyyI9G/c4RIpwei9dLVz9w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/inspector/-/inspector-0.39.3.tgz}
     name: '@unocss/inspector'
@@ -1531,6 +1539,14 @@ packages:
     resolution: {integrity: sha512-ex2QDRgBQ5mTwBcXtCWdTDPl6/HrBv0asDWVXXv7ezjxcByJjMrHj64gMvUbAcGAoX2ic7hIEUT3Ju5i6knKFw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/scope/-/scope-0.39.3.tgz}
     name: '@unocss/scope'
     version: 0.39.3
+    dev: true
+
+  registry.npmmirror.com/@unocss/transformer-attributify-jsx/0.50.4:
+    resolution: {integrity: sha512-DETbAiN/i393/OLuyEMBCXr2wDGyqEbkDMl/ZPN5RKO6m7312yt0KebnfIJnKaL0wGs90ohtV4ZHWMOeucX2jQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@unocss/transformer-attributify-jsx/-/transformer-attributify-jsx-0.50.4.tgz}
+    name: '@unocss/transformer-attributify-jsx'
+    version: 0.50.4
+    dependencies:
+      '@unocss/core': registry.npmmirror.com/@unocss/core/0.50.4
     dev: true
 
   registry.npmmirror.com/@unocss/transformer-compile-class/0.39.3:
