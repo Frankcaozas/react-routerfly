@@ -1,41 +1,48 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import Footer from '../components/footer/Footer';
 import { FloatProxy } from '../../../src/';
-import TheImage from '../components/TheImage';
+import Footer from '../components/footer/Footer';
+import MyComponent from '../components/MyComponent';
+import { images } from '../data';
 const IndexPage = () => {
   const navigate = useNavigate()
-  const goFoo = () => {
-    navigate('/foo')
-  }
-  const goBar = () => {
+  const [mode, setMode] = useState(false)
+
+  const goNone = () => {
     navigate('/bar')
   }
+
   return (
-    <div p='x-10 y-20' un-text="center gray-700 dark:gray-200 ma">
-      <div>
-        <FloatProxy port={'1'} overflow-hidden w-50 h-50 rounded-xl mx-a>
-          <TheImage />
-        </FloatProxy>
-        {/* <FloatProxy port={'2'} overflow-hidden w-50 h-50 rounded-xl mx-a>
-          <TheImage />
-        </FloatProxy> */}
+    <div >
+      <h1>Shared component across routes with animations </h1>
+
+      <button btn onClick={goNone}>go none</button>
+      <button btn onClick={() => { setMode((mode) => { return !mode }) }}>toggle</button>
+
+      <div id="gallery" grid="~ cols-1 sm:cols-2 md:cols-3 lg:cols-4 xl:cols-6" px-10 justify-center>
+        {
+          images.map((src, index) => {
+            return (
+              <FloatProxy
+                key={index}
+                port={String(index)}
+                className={mode ? 'aspect-1/1 m2' : 'aspect-16/9'}
+                transition-all duration-800
+                onClick={(e) => {
+                  e.preventDefault()
+                  navigate('/' + index)
+                }}
+              >
+                <MyComponent
+                  className={mode ? 'rounded shadow-lg' : ''}
+                  index={index}
+                />
+              </FloatProxy>
+            )
+          })
+        }
       </div>
-
-
-      <h1>home page</h1>
-      <button btn onClick={goFoo}>foo</button>
-      <button btn onClick={goBar}>bar</button>
       <Footer></Footer>
-      <p flex-1 text-left>
-        No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-      </p>
-      <p flex-1 text-left>
-        No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-      </p>
-      <p flex-1 text-left>
-        No one’s born being good at all things. You become good at things through hard work.You’re not a varsity athlete the first time you play a new sport. You don’t hit every note the first time you sing a song.You’ve got to practice. The same principle applies to your schoolwork.You might have to do a math problem a few times before you get it right. You might have to read something a few times before you understand it.You definitely have to do a few drafts of a paper before it’s good enough to hand in.
-      </p>
-      
     </div>
   );
 };

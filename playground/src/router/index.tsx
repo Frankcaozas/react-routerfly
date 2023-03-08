@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import App from "../App";
 import IndexPage from "../pages";
-import Bar from "../pages/bar";
-import Foo from "../pages/foo";
-import App from "../app"
+import Detail from "../pages/detail";
+import None from "../pages/none";
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -12,13 +12,17 @@ export const router = createBrowserRouter([
         path: '/',
         element: <IndexPage />
       },
-      {
-        path: '/foo',
-        element: <Foo/>
-      },
+      // {
+      //   path: '/foo',
+      //   element: <Foo/>
+      // },
       {
         path:'/bar',
-        element: <Bar/>
+        element: <None/>
+      },
+      {
+        path:'/:index',
+        element: <Detail/>
       }
     ]
   }

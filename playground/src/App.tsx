@@ -1,14 +1,14 @@
-import React from 'react';
 import { Outlet } from 'react-router';
-import { Float, FloatContainer } from '../../src';
-import TheImage from './components/TheImage';
+import { Float } from '../../src';
 
 const App = () => {
   return (
     <Float>
       <>
-      {/* {<FloatContainer port={1}><TheImage/></FloatContainer>} */}
-      <Outlet />
+        <main p='x-5 y-10' un-text="center gray-700 dark:gray-200 ">
+          <Outlet />
+        </main>
+
       </>
     </Float>
   );
