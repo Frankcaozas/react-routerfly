@@ -1,10 +1,10 @@
-import React, { useContext, createContext, useState, ReactElement } from 'react'
+import React, { useContext, createContext, useState, ReactElement, ReactNode } from 'react'
 import ReactDOM from 'react-dom'
 
 const AliveScopeContext = createContext<any>({})
 
 
-export const AliveScope = (props: any) => {
+export const AliveScope = (props: {children: ReactNode}) => {
   const [nodes, setNodes] = useState<any>({})
   const { children } = props
   const getPortalElement = (id: any, children: ReactElement) => {

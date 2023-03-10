@@ -1,4 +1,4 @@
-export interface StarportOptions {
+export interface RouterFlyOptions {
   /**
    * The duration of the animation in milliseconds.
    * @default 600
@@ -18,7 +18,7 @@ export interface StarportOptions {
   keepAlive?: boolean
 }
 
-export type ResolvedStarportOptions = Required<StarportOptions>
+export type ResolvedRouterFlyOptions = Required<RouterFlyOptions>
 
 export interface StarportCraftProps {
   /**
@@ -27,10 +27,10 @@ export interface StarportCraftProps {
   port: string
 }
 
-export interface StarportProxyProps extends StarportOptions, StarportCraftProps {
+export interface RouterFlyProxyProps extends RouterFlyOptions, StarportCraftProps {
 }
 
-export interface StarportProps extends StarportProxyProps {
+export interface RouterFlyProps extends RouterFlyProxyProps {
   /**
    * Props that apply to the proxy when it is mounted.
    */

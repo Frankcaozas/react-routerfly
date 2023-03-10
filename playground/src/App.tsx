@@ -1,16 +1,18 @@
 import { Outlet } from 'react-router';
-import { Float } from '../../src';
+import { Float, RouterFlyCarrier } from '../../src';
+import TheNav from './components/TheNav';
 
 const App = () => {
   return (
-    <Float>
+    <RouterFlyCarrier>
       <>
-        <main p='x-5 y-10' un-text="center gray-700 dark:gray-200 ">
+        <TheNav/>
+        <main p='x-5' un-text="center gray-700 dark:gray-200 ">
           <Outlet />
         </main>
 
       </>
-    </Float>
+    </RouterFlyCarrier>
   );
 };
 
