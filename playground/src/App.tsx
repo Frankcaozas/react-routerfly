@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import { Float, RouterFlyCarrier } from '../../src';
+import { RouterFlyCarrier } from '../../src';
 import TheNav from './components/TheNav';
 
 const App = () => {
