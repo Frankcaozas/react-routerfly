@@ -13,6 +13,7 @@ const TheNav = () => {
       flex="~ gap2"
       text-xl items-center
     >
+      <p>RouterFly</p>
       <div flex-auto />
 
       <div flex="~ gap4" items-center>

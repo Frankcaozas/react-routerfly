@@ -20,6 +20,7 @@ export const RouterFly = (props: any) => {
       })
     }
     setMetadata((pre) => {
+      console.log('update meta')
       pre[port] = attr
       return [...pre]
     })

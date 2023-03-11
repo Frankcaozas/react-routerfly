@@ -11,31 +11,33 @@ const Detail = () => {
   const back = () => {
     nav('/')
   }
-  const [size, setSize] = useState(100)
+  const [size, setSize] = useState(200)
   const enlarge = () => {
     setSize(pre => pre + 30)
   }
   const reset = () => {
-    setSize(100)
+    setSize(200)
   }
-  // console.log(size);
   const style = {
     width: size + 'px',
     height: size + 'px',
   }
   return (
     <div   >
-      <h1>detail page</h1>
-      <button btn
-        onClick={back}>
-        back
-      </button>
-      <button onClick={enlarge} btn >
-        enlarge
-      </button>
-      <button onClick={reset} btn >
-        reset
-      </button>
+      <h1 mb-2>detail page</h1>
+      <div flex='~ gap-2' justify-center>
+        <button btn
+          onClick={back}>
+          back
+        </button>
+        <button onClick={enlarge} btn >
+          enlarge
+        </button>
+        <button onClick={reset} btn >
+          reset
+        </button>
+      </div>
+
 
       <div className="circle-0" mx-a items-center max-w-180 my-5
         flex="~ col sm:row gap6">
