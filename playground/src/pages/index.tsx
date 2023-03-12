@@ -13,7 +13,6 @@ const IndexPage = () => {
 
   return (
     <div items-center>
-
       <h1>Shared React component across routes with animations </h1>
 
       <div p2 flex="~ gap-2" justify-center>
@@ -22,7 +21,7 @@ const IndexPage = () => {
           setLocalMode(!localMode)
         }}>toggle</button>
       </div>
-
+      <h1>click the img or the number </h1>
 
       <div id="gallery" grid="~ cols-1 sm:cols-2 md:cols-3 lg:cols-4 xl:cols-6" px-10 justify-center>
         {

@@ -24,7 +24,7 @@ const Detail = () => {
   }
   return (
     <div   >
-      <h1 mb-2>detail page</h1>
+      <h1 mb-2>same instance of component in different pages</h1>
       <div flex='~ gap-2' justify-center>
         <button btn
           onClick={back}>

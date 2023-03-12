@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDark } from '../hooks/useDark';
 
 const TheNav = () => {
@@ -12,8 +13,15 @@ const TheNav = () => {
       border="b gray-400/10"
       flex="~ gap2"
       text-xl items-center
-    >
-      <p>RouterFly</p>
+    > 
+      <Link to="/" flex="~ gap2" items-center>
+      <img src="/favicon.svg" h-10 dark:bg-hex-121212 />
+      <div font-mono text-left leading-1em mr6 text-sm>
+        React
+        <br/>
+        Routerfly
+      </div>
+    </Link>
       <div flex-auto />
 
       <div flex="~ gap4" items-center>
