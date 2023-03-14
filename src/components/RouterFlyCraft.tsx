@@ -35,7 +35,10 @@ export const RouterFlyCraft = (props: any) => {
     }
   }
   if (isLanded[port]) {
-    style.display = 'none'
+    style = {
+      ...style,
+      display: 'none'
+    }
   } else {
     style = {
       ...style,
@@ -59,11 +62,11 @@ export const RouterFlyCraft = (props: any) => {
 
   return (
     <div
-    {...metadata[port]}
+      {...metadata[port]}
       style={{
         ...style,
       }}
-      
+
       onTransitionEnd={async () => {
         await Promise.resolve().then(() => {
           setIsLanded((pre) => {
@@ -74,7 +77,7 @@ export const RouterFlyCraft = (props: any) => {
         })
       }}
     >
-      
+
       {(isLanded[port] && el) ?
         createPortal(
           <KeepAlive id={port}>{component}</KeepAlive>

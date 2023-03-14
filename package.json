@@ -1,6 +1,19 @@
 {
   "name": "react-routerfly",
   "version": "0.0.0",
+  "packageManager": "pnpm@7.12.2",
+  "description": "Shared React component across routes with animations",
+  "author": "frankcao <1666930632@qq.com>",
+  "keywords": [
+    "react",
+    "animation",
+    "transition"
+  ],
+  "homepage": "https://github.com/Frankcaozas/react-routerfly",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frankcaozas/react-routerfly.git"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.mjs",

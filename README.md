@@ -33,13 +33,13 @@ Routerfly 就是为了解决这一需求， 你可以将其理解为 [Vue Starpo
 <img src="./graphs/readme2.png" width="400" />
 </p>
 
-但这样做有个问题，该组件在 DOM 树中的节点位置和原本不一样，它是漂浮于根节点的。当动画结束后。
+但这样做有个问题，该组件在 DOM 树中的节点位置和原本不一样，它是漂浮于根节点的。
 
 <p align="center">
 <img src="./graphs/readme2.png" width="400" />
 </p>
 
-用 [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) 函数将其传送到 DOM 树的实际节点。
+当动画结束后,用 [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) 函数将其传送到 DOM 树的实际节点。
 通过这种“降落”机制， DOM 树就可以保持原有的结构。
 
 ## Usage
