@@ -107,3 +107,7 @@ export default App;
 ## Todo
 - [ ] 可配置keepalive（当前默认开启keepalive，跳转到没有相应`<RouterFly>`代理的页面时，不会被销毁）
 - [ ] 可配置duration
+
+## License
+
+[MIT](./LICENSE) License © 2023 [frankcao](https://github.com/Frankcaozas)
