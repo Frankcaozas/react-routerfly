@@ -65,7 +65,7 @@ const App = () => {
 export default App
 ```
 
-在某个页面， 使用`<RouterFly>`来包裹组件, 并传入`port`属性(number)
+在某个页面， 使用`<RouterFly>`来包裹组件, 并传入`port`属性('1', '2', '3')
 
 ```ts
 import {RouterFly} from 'react-routerfly'
@@ -74,7 +74,7 @@ const PageA = () => {
   return (
     <div>
     <!-- ... -->
-    <RouterFly port="my-num" style="height:600px">
+    <RouterFly port={'1'} style={{height:600px}}>
       <MyComponent prop={value} />
     </RouterFly>
   </div>
@@ -88,11 +88,11 @@ export default App;
 ```ts
 import {RouterFly} from 'react-routerfly'
 
-const PageA = () => {
+const PageB = () => {
   return (
     <div>
     <!-- ... -->
-    <RouterFly port="my-num" style="height:600px">
+    <RouterFly port={'1'} style={{height:400px}}>
       <MyComponent prop={value} />
     </RouterFly>
   </div>
@@ -106,3 +106,4 @@ export default App;
 
 ## Todo
 - [ ] 可配置keepalive（当前默认开启keepalive，跳转到没有相应`<RouterFly>`代理的页面时，不会被销毁）
+- [ ] 可配置duration
