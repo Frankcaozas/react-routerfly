@@ -42,6 +42,11 @@ Routerfly 就是为了解决这一需求， 你可以将其理解为 [Vue Starpo
 当动画结束后,用 [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) 函数将其传送到 DOM 树的实际节点。
 通过这种“降落”机制， DOM 树就可以保持原有的结构。
 
+## Install
+```
+npm i react-routerfly
+```
+
 ## Usage
 
 从 `react-routerfly` 导出并添加 `<RouterFlyCarrier>` 组件到根组件 (`app.ts`)。 所有的 `<RouterFly>` 组件调用需要在 `<RouterFlyCarrier>` 组件内部。
