@@ -1,6 +1,6 @@
 {
   "name": "react-routerfly",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "packageManager": "pnpm@7.12.2",
   "description": "Shared React component across routes with animations",
   "author": "frankcao <1666930632@qq.com>",
@@ -13,7 +13,7 @@
   "homepage": "https://github.com/Frankcaozas/react-routerfly",
   "repository": {
     "type": "git",
-    "url": "git@https://github.com/Frankcaozas/react-routerfly.git"
+    "url": "git+https://github.com/Frankcaozas/react-routerfly.git"
   },
   "exports": {
     ".": {

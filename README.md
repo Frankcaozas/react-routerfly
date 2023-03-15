@@ -44,7 +44,7 @@ Routerfly 就是为了解决这一需求， 你可以将其理解为 [Vue Starpo
 
 ## Usage
 
-从 `vue-starport` 导出并添加 `<RouterFlyCarrier>` 组件到根组件 (`app.ts`)。 所有的 `<RouterFly>` 组件调用需要在 `<RouterFlyCarrier>` 组件内部。
+从 `react-routerfly` 导出并添加 `<RouterFlyCarrier>` 组件到根组件 (`app.ts`)。 所有的 `<RouterFly>` 组件调用需要在 `<RouterFlyCarrier>` 组件内部。
 
 ```ts
 import { RouterFlyCarrier } from 'react-routerfly'
