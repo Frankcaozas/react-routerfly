@@ -1,55 +1,55 @@
 <br>
 <p align="center">
-React 跨路由共享组件 
+Shared React component with across routes with animations 
 </p>
 <p align="center"><a href="https://friendly-paletas-0b8746.netlify.app/">Live Playground</a></p>
 <p align="center">
 Inspired by <a href="https://github.com/antfu/">Antfu</a>
 </p>
+<p align="center">English | <a href="./README.zh.md">简体中文</a></p>
 <br>
 
 ## Why
+---
+We usually use the same React compoennt in different pages(routes) with different sizes and positions. Sometime you may want to have smooth animation of the component when switching between routes.
 
-我们经常会在不同页面使用同一个组件，他们在不同页面之间的位置和大小形状不同。
-有时我们希望在路由间跳转时，相同组件能有流畅的过渡动画。
-
-React 的组件结构以 **_树_** 的形式呈现，即使是相同的组件在不同的路由下也会有不同的实例，这意味着当用户在路由之间跳转时，同样的组件并不会跨路由共享。
+The component structure of React is presented in the form of a **tree**, and even the same component will have different instances under different routes. This means that when users switch between routes, the same component will not be shared across routes.
 
 <p align="center">
 <img src="./graphs/readme1.png" width="400" />
 </p>
 
-已有的跨路由组件解决方案是 [FLIP](https://github.com/googlearchive/flipjs), 它可以模拟组件之间的过渡动画， 然而我们还是创建了两个组件实例， 并且组件内部的状态会丢失。
+The existing solution for cross-route components is FLIP, which can simulate transition animations between components. However, it still creates two component instances and the internal state of the component is lost.
 
-Routerfly 就是为了解决这一需求， 你可以将其理解为 [Vue Starport](https://github.com/antfu/vue-starport) 的 React 版本。
+Routerfly is designed to address this need, and you can think of it as the React version of [Vue Starport](https://github.com/antfu/vue-starport).
 
 ## How
+---
+Since we cannot share components between different branches of the component tree, we can actually lift the components up to the root node so that they exist independently of the routes.
 
-既然我们无法在组件树的不同分支之间共享组件，我们其实上可以将组件提升到根节点上，从而它们独立于路由而存在。
-
-使用一个 **代理组件** 获取该组件的位置，尺寸，props， 并将信息传递给真实的组件， 让它在切换路由时通过动画飞到另一个页面的位置。
-
-<p align="center">
-<img src="./graphs/readme2.png" width="400" />
-</p>
-
-但这样做有个问题，该组件在 DOM 树中的节点位置和原本不一样，它是漂浮于根节点的。
+Using a **proxy** component to obtain the position, size, and props of the component, and pass the information to the actual component, allowing it to “fly” to the position of another page through animation when switching routes.
 
 <p align="center">
 <img src="./graphs/readme2.png" width="400" />
 </p>
 
-当动画结束后,用 [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) 函数将其传送到 DOM 树的实际节点。
-通过这种“降落”机制， DOM 树就可以保持原有的结构。
+However, there is a problem with this approach. The node position of the component in the DOM tree is different from its original position because it is floating at the root node.
+
+<p align="center">
+<img src="./graphs/readme2.png" width="400" />
+</p>
+
+When the animation is finished, we can use the [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) function to teleport it to the actual node in the DOM tree. Through this "landing" mechanism, the structure of the DOM tree can be maintained.
 
 ## Install
+---
 ```
 npm i react-routerfly
 ```
 
 ## Usage
-
-从 `react-routerfly` 导出并添加 `<RouterFlyCarrier>` 组件到根组件 (`app.ts`)。 所有的 `<RouterFly>` 组件调用需要在 `<RouterFlyCarrier>` 组件内部。
+---
+export `<RouterFlyCarrier>` from `react-routerfly` and add it to the root component(`app.ts`). All useage of `<RouterFly>` should be inside `<RouterFlyCarrier>` component.
 
 ```ts
 import { RouterFlyCarrier } from 'react-routerfly'
@@ -58,11 +58,10 @@ const App = () => {
   return (
     <RouterFlyCarrier>
       <>
-        <TheNav />
-        <main p="x-5" un-text="center gray-700 dark:gray-200 ">
+        <Layout>
           <Outlet />
-        </main>
-      </>
+        <Layout/>
+      </Layout>
     </RouterFlyCarrier>
   )
 }
@@ -70,7 +69,7 @@ const App = () => {
 export default App
 ```
 
-在某个页面， 使用`<RouterFly>`来包裹组件, 并传入`port`属性('1', '2', '3')
+In a certain page, wrap the component with `<RouterFly>` and pass the port prop ('1', '2', '3'):
 
 ```ts
 import {RouterFly} from 'react-routerfly'
@@ -89,29 +88,31 @@ const PageA = () => {
 export default App;
 ```
 
-在另一个页面上，使用相同的port使其匹配
+On another page, use the same `port` to match it:
+
 ```ts
 import {RouterFly} from 'react-routerfly'
 
 const PageB = () => {
   return (
     <div>
-    <!-- ... -->
-    <RouterFly port={'1'} style={{height:400px}}>
-      <MyComponent prop={value} />
-    </RouterFly>
-  </div>
+      <!-- ... -->
+      <RouterFly port={'1'} style={{height:400px}}>
+        <MyComponent prop={value} />
+      </RouterFly>
+    </div>
   );
 };
 
 export default App;
 ```
 
-> 请注意，你可能需要对 `<RouterFly>` 添加一些样式，使其在没有内容时也能拥有的大小。 并且将布局相关的样式放在`<RouterFly>`上。
+> Please note that you may need to add some styles to `<RouterFly>` so that it has a size even when there is no content. Also, place layout-related styles on `<RouterFly>`.
 
 ## Todo
-- [ ] 可配置keepalive（当前默认开启keepalive，跳转到没有相应`<RouterFly>`代理的页面时，不会被销毁）
-- [ ] 可配置duration
+
+- [ ] keepalive configurable（by default, `<RouterFly>` has keepalive enabled. This means that when you navigate to a page that does not have a corresponding `<RouterFly>` proxy, the component will not be unmounted and will remain in memory.）
+- [ ] animation duration configurable
 
 ## License
 
