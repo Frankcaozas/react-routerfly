@@ -1,6 +1,6 @@
 {
   "name": "react-routerfly",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "packageManager": "pnpm@7.12.2",
   "description": "Shared React component across routes with animations",
   "author": "frankcao <1666930632@qq.com>",

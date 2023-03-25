@@ -69,7 +69,7 @@ const App = () => {
 export default App
 ```
 
-In a certain page, wrap the component with `<RouterFly>` and pass the port prop (can any string)
+In a certain page, wrap the component with `<RouterFly>` and pass the port prop (any string)
 
 ```ts
 import {RouterFly} from 'react-routerfly'
