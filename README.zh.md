@@ -71,7 +71,7 @@ const App = () => {
 export default App
 ```
 
-在某个页面， 使用`<RouterFly>`来包裹组件, 并传入`port`属性('1', '2', '3')
+在某个页面， 使用`<RouterFly>`来包裹组件, 并传入`port`属性(任意string)
 
 ```ts
 import {RouterFly} from 'react-routerfly'
@@ -80,7 +80,7 @@ const PageA = () => {
   return (
     <div>
       <!-- ... -->
-      <RouterFly port={'1'} style={{height:600px}}>
+      <RouterFly port={id} style={{height:600px}}>
         <MyComponent prop={value} />
       </RouterFly>
     </div>
@@ -98,7 +98,7 @@ const PageB = () => {
   return (
     <div>
       <!-- ... -->
-      <RouterFly port={'1'} style={{height:400px}}>
+      <RouterFly port={id} style={{height:400px}}>
         <MyComponent prop={value} />
       </RouterFly>
     </div>

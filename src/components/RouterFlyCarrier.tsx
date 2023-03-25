@@ -16,12 +16,12 @@ export const RouterFlyCarrier = (props: { children: ReactElement }) => {
       <AliveScope>
         {props.children}
         {
-          context.comp.filter((comp)=>comp !== undefined).map((comp, port) => {
+          Object.values(context.comp).filter((comp)=>comp !== undefined).map((comp, port) => {
             return (
               <RouterFlyCraft
-                port={port}
+                port={comp.port}
                 key={port}
-                component={comp}
+                component={comp.children}
               />)
           })
         }

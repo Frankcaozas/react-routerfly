@@ -16,21 +16,19 @@ export const RouterFly = (props: any) => {
     if (!comp[port]) {
       setComp((pre) => {
         pre[port] = children
-        return [...pre]
+        return {...pre, [port]: {children, port}}
       })
     }
     setMetadata((pre) => {
-      console.log('update meta')
-      pre[port] = attr
-      return [...pre]
+      return {...pre, [port]: attr}
     })
     setPrxyEl((pre) => {
       pre[port] = el.current
-      return [...pre]
+      return {...pre, [port]: el.current}
     })
     setIsLanded((pre) => {
       pre[port] = true
-      return [...pre]
+      return {...pre, [port]: true}
     })
   }, [props])
 
@@ -40,18 +38,18 @@ export const RouterFly = (props: any) => {
       Promise.resolve().then(() => {
         setIsLanded((pre) => {
           pre[port] = false
-          return [...pre]
+          return {...pre, [port]: false}
         })
       })
 
       setIsLanded((pre) => {
         pre[port] = true
-        return [...pre]
+        return {...pre, [port]: true}
       })
 
       setPrxyEl((pre) => {
         pre[port] = null
-        return [...pre]
+        return {...pre, [port]: null}
       })
     }
     return () => {

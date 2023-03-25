@@ -12,7 +12,6 @@ export const RouterFlyCraft = (props: any) => {
     isLanded,
     setIsLanded,
   } = useContext(routerFlyContext)
-
   const el = proxyEl[port]
   const rect = useRect(el)
 
@@ -45,20 +44,6 @@ export const RouterFlyCraft = (props: any) => {
       transition: 'all 1s ease-in-out'
     }
   }
-  // const update = () => {
-  //   // Promise.resolve().then(() => { })
-  //   console.log(rect === el?.getBoundingClientRect());
-  //   setReact(el?.getBoundingClientRect())
-  //   console.log(style,rect,el?.getBoundingClientRect());
-  // }
-  // useLayoutEffect(() => {
-  //   update()
-  //   update()
-  //   window.addEventListener('resize',update)
-  //   return ()=>{
-  //     window.removeEventListener('resize', update)
-  //   }
-  // }, [metadata[port], ])
 
   return (
     <div
@@ -72,7 +57,7 @@ export const RouterFlyCraft = (props: any) => {
           setIsLanded((pre) => {
             // console.log('landed');
             pre[port] = true
-            return [...pre]
+            return {...pre, [port]: true}
           })
         })
       }}

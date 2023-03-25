@@ -29,7 +29,7 @@ const IndexPage = () => {
             return (
               <RouterFly
                 key={index}
-                port={String(index)}
+                port={String(index)+'routerfly'}
                 className={localMode ? 'aspect-16/9' : 'aspect-1/1 m2'}
                 transition-all duration-800
                 onClick={(e) => {
