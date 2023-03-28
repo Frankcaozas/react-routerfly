@@ -1,6 +1,6 @@
 <br>
 <p align="center">
-Shared React component with across routes with animations 
+Shared React component across routes with animations 
 </p>
 <p align="center"><a href="https://friendly-paletas-0b8746.netlify.app/">Live Playground</a></p>
 <p align="center">
@@ -10,7 +10,6 @@ Inspired by <a href="https://github.com/antfu/">Antfu</a>
 <br>
 
 ## Why
----
 We usually use the same React compoennt in different pages(routes) with different sizes and positions. Sometime you may want to have smooth animation of the component when switching between routes.
 
 The component structure of React is presented in the form of a **tree**, and even the same component will have different instances under different routes. This means that when users switch between routes, the same component will not be shared across routes.
@@ -24,7 +23,6 @@ The existing solution for cross-route components is FLIP, which can simulate tra
 Routerfly is designed to address this need, and you can think of it as the React version of [Vue Starport](https://github.com/antfu/vue-starport).
 
 ## How
----
 Since we cannot share components between different branches of the component tree, we can actually lift the components up to the root node so that they exist independently of the routes.
 
 Using a **proxy** component to obtain the position, size, and props of the component, and pass the information to the actual component, allowing it to “fly” to the position of another page through animation when switching routes.
@@ -42,13 +40,11 @@ However, there is a problem with this approach. The node position of the compone
 When the animation is finished, we can use the [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) function to teleport it to the actual node in the DOM tree. Through this "landing" mechanism, the structure of the DOM tree can be maintained.
 
 ## Install
----
 ```
 npm i react-routerfly
 ```
 
 ## Usage
----
 export `<RouterFlyCarrier>` from `react-routerfly` and add it to the root component(`app.ts`). All useage of `<RouterFly>` should be inside `<RouterFlyCarrier>` component.
 
 ```ts
