@@ -1,6 +1,6 @@
 {
   "name": "react-routerfly",
-  "version": "0.0.5",
+  "version": "0.0.8",
   "packageManager": "pnpm@7.12.2",
   "description": "Shared React component across routes with animations",
   "author": "frankcao <1666930632@qq.com>",
@@ -33,9 +33,9 @@
     "build": "pkgroll",
     "preview": "vite preview"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "devDependencies": {
     "@types/node": "^18.7.23",
