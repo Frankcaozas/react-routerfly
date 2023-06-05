@@ -5,7 +5,7 @@ import MyComponent from '../components/MyComponent';
 import { images } from '../data';
 const IndexPage = () => {
   const navigate = useNavigate()
-  const [localMode, setLocalMode] = useLocalStorage('img-mode', false);
+  const [localMode, setLocalMode] = useLocalStorage('img-mode', true);
 
   const goNone = () => {
     navigate('/bar')
