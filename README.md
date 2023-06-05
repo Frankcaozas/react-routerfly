@@ -6,7 +6,7 @@ Shared React component across routes with animations
 <p align="center">
 Inspired by <a href="https://github.com/antfu/">Antfu</a>
 </p>
-<p align="center">English | <a href="./README.zh.md">简体中文</a></p>
+<p align="center">English | <a href="./README.zh.md">中文</a></p>
 <br>
 
 ## Why
@@ -14,9 +14,6 @@ We usually use the same React compoennt in different pages(routes) with differen
 
 The component structure of React is presented in the form of a **tree**, and even the same component will have different instances under different routes. This means that when users switch between routes, the same component will not be shared across routes.
 
-<p align="center">
-<img src="./graphs/readme1.png" width="400" />
-</p>
 
 The existing solution for cross-route components is FLIP, which can simulate transition animations between components. However, it still creates two component instances and the internal state of the component is lost.
 
@@ -27,15 +24,10 @@ Since we cannot share components between different branches of the component tre
 
 Using a **proxy** component to obtain the position, size, and props of the component, and pass the information to the actual component, allowing it to “fly” to the position of another page through animation when switching routes.
 
-<p align="center">
-<img src="./graphs/readme2.png" width="400" />
-</p>
+
 
 However, there is a problem with this approach. The node position of the component in the DOM tree is different from its original position because it is floating at the root node.
 
-<p align="center">
-<img src="./graphs/readme2.png" width="400" />
-</p>
 
 When the animation is finished, we can use the [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) function to teleport it to the actual node in the DOM tree. Through this "landing" mechanism, the structure of the DOM tree can be maintained.
 

@@ -17,9 +17,7 @@ Inspired by <a href="https://github.com/antfu/">Antfu</a>
 
 React 的组件结构以 **_树_** 的形式呈现，即使是相同的组件在不同的路由下也会有不同的实例，这意味着当用户在路由之间跳转时，同样的组件并不会跨路由共享。
 
-<p align="center">
-<img src="./graphs/readme1.png" width="400" />
-</p>
+
 
 已有的跨路由组件解决方案是 [FLIP](https://github.com/googlearchive/flipjs), 它可以模拟组件之间的过渡动画， 然而我们还是创建了两个组件实例， 并且组件内部的状态会丢失。
 
@@ -31,15 +29,11 @@ Routerfly 就是为了解决这一需求， 你可以将其理解为 [Vue Starpo
 
 使用一个 **代理组件** 获取该组件的位置，尺寸，props， 并将信息传递给真实的组件， 让它在切换路由时通过动画“起飞”到另一个页面的位置。
 
-<p align="center">
-<img src="./graphs/readme2.png" width="400" />
-</p>
+
 
 但这样做有个问题，该组件在 DOM 树中的节点位置和原本不一样，它是漂浮于根节点的。
 
-<p align="center">
-<img src="./graphs/readme2.png" width="400" />
-</p>
+
 
 当动画结束后,用 [createPortal](https://beta.reactjs.org/reference/react-dom/createPortal) 函数将其传送到 DOM 树的实际节点。
 通过这种“降落”机制， DOM 树就可以保持原有的结构。
