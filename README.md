@@ -2,7 +2,7 @@
 <p align="center">
 Shared React component across routes with animations 
 </p>
-<p align="center"><a href="https://friendly-paletas-0b8746.netlify.app/">Live Playground</a></p>
+<p align="center"><a href="https://routerfly.frankszy.com/">Live Playground</a></p>
 <p align="center">
 Inspired by <a href="https://github.com/antfu/">Antfu</a>
 </p>
