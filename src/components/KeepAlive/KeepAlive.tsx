@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, ReactNode } from 'react'
 import { useAliveScope } from './AliveScope'
 
-const KeepAlive = (props: any) => {
+const KeepAlive = (props: {id: string, children: ReactNode}) => {
   const { id, children } = props
   const getPortalElement = useAliveScope()
   const keepAliveRef = useRef<HTMLDivElement>(null)
@@ -12,6 +12,7 @@ const KeepAlive = (props: any) => {
   }
   useEffect(() => {
     appendPortalElement()
+    
   }, [])
 
   return <div
