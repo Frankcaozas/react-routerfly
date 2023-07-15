@@ -3,6 +3,7 @@ import { useLocalStorage } from 'react-use';
 import { RouterFly } from '../../../src/';
 import MyComponent from '../components/MyComponent';
 import { images } from '../data';
+import { SyntheticEvent } from 'react';
 const IndexPage = () => {
   const navigate = useNavigate()
   const [localMode, setLocalMode] = useLocalStorage('img-mode', true);
@@ -32,7 +33,7 @@ const IndexPage = () => {
                 port={String(index)+'routerfly'}
                 className={localMode ? 'aspect-16/9' : 'aspect-1/1 m2'}
                 transition-all duration-800
-                onClick={(e) => {
+                onClick={(e: SyntheticEvent) => {
                   e.preventDefault()
                   navigate('/' + index)
                 }}
