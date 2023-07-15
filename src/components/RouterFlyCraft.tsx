@@ -14,10 +14,11 @@ import { RouterFlyContext } from '../context';
 //   setIsLanded: RouterFlyContext['setIsLanded']
 // }
 export const RouterFlyCraft = memo((props: {
-  port: string
-  component: ReactNode
+  port: string,
+  component: ReactNode,
+  keepAlive?: boolean
 }) => {
-  const { port: p, component } = props
+  const { port: p, component, keepAlive = true } = props
   const port = p
   const { metadata,
     proxyEl,
@@ -58,7 +59,7 @@ export const RouterFlyCraft = memo((props: {
     }
     return style
   }, [rect, proxyEl[port], isLanded[port], scrollLeft, scrollTop])
-
+  const c = keepAlive ? <KeepAlive id={port}>{component}</KeepAlive> : component
   return (
     <div
       {...metadata[port]}
@@ -78,12 +79,11 @@ export const RouterFlyCraft = memo((props: {
 
       {(isLanded[port] && el) ?
         createPortal(
-          <KeepAlive id={port}>{component}</KeepAlive>
-          // component
+          // <KeepAlive id={port}>{component}</KeepAlive>
+          c
           , el, port)
-        :
-        <KeepAlive id={port}>{component}</KeepAlive>
-        // component
+        : c
+        // <KeepAlive id={port}>{component}</KeepAlive>
       }
     </div>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import { FloatProxy, RouterFly } from '../../../src';
+import { RouterFly } from '../../../src';
 import MyComponent from '../components/MyComponent';
 import { images } from '../data';
 

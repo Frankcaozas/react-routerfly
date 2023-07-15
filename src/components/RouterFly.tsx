@@ -6,7 +6,7 @@ interface RouterFlyProps {
   [key: string]: any
 }
 export const RouterFly: React.FC<RouterFlyProps> = memo((props) => {
-  const { children, port: p, keepAlive = false, ...attr } = props
+  const { children, port: p, keepAlive = true, ...attr } = props
   const port = p
   const {
     setMetadata,
@@ -19,7 +19,7 @@ export const RouterFly: React.FC<RouterFlyProps> = memo((props) => {
   useEffect(() => {
     if (!comp[port]) {
       setComp((pre) => {
-        return { ...pre, [port]: { children, port } }
+        return { ...pre, [port]: { children, port, keepAlive } }
       })
     }
     setMetadata((pre) => {

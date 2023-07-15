@@ -22,6 +22,7 @@ export const RouterFlyCarrier = (props: { children: ReactElement }) => {
                 port={comp.port}
                 key={port}
                 component={comp.children}
+                keepAlive={comp.keepAlive}
               />)
           })
         }
