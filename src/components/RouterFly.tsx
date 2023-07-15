@@ -1,8 +1,12 @@
-import { useContext, useEffect, useRef } from 'react';
+import { ReactNode, memo, useContext, useEffect, useRef } from 'react';
 import { routerFlyContext } from './RouterFlyCarrier';
-
-export const RouterFly = (props: any) => {
-  const { children, port: p, ...attr } = props
+interface RouterFlyProps {
+  children: ReactNode,
+  keepAlive?: boolean
+  [key: string]: any
+}
+export const RouterFly: React.FC<RouterFlyProps> = memo((props) => {
+  const { children, port: p, keepAlive = false, ...attr } = props
   const port = p
   const {
     setMetadata,
@@ -15,20 +19,17 @@ export const RouterFly = (props: any) => {
   useEffect(() => {
     if (!comp[port]) {
       setComp((pre) => {
-        pre[port] = children
-        return {...pre, [port]: {children, port}}
+        return { ...pre, [port]: { children, port } }
       })
     }
     setMetadata((pre) => {
-      return {...pre, [port]: attr}
+      return { ...pre, [port]: attr }
     })
     setPrxyEl((pre) => {
-      pre[port] = el.current
-      return {...pre, [port]: el.current}
+      return { ...pre, [port]: el.current }
     })
     setIsLanded((pre) => {
-      pre[port] = true
-      return {...pre, [port]: true}
+      return { ...pre, [port]: true }
     })
   }, [props])
 
@@ -37,19 +38,17 @@ export const RouterFly = (props: any) => {
     const lifOff = () => {
       Promise.resolve().then(() => {
         setIsLanded((pre) => {
-          pre[port] = false
-          return {...pre, [port]: false}
+          return { ...pre, [port]: false }
         })
       })
 
       setIsLanded((pre) => {
-        pre[port] = true
-        return {...pre, [port]: true}
+        return { ...pre, [port]: true }
       })
 
       setPrxyEl((pre) => {
-        pre[port] = null
-        return {...pre, [port]: null}
+
+        return { ...pre, [port]: null }
       })
     }
     return () => {
@@ -62,5 +61,5 @@ export const RouterFly = (props: any) => {
       ref={el}>
     </div>
   );
-};
+});
 
