@@ -1,9 +1,9 @@
+import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { useLocalStorage } from 'react-use';
 import { RouterFly } from '../../../src/';
 import MyComponent from '../components/MyComponent';
 import { images } from '../data';
-import { SyntheticEvent } from 'react';
 const IndexPage = () => {
   const navigate = useNavigate()
   const [localMode, setLocalMode] = useLocalStorage('img-mode', true);
@@ -18,7 +18,7 @@ const IndexPage = () => {
 
       <div p2 flex="~ gap-2" justify-center>
         <button btn onClick={goNone} >go none</button>
-        <button btn onClick={()=>{
+        <button btn onClick={() => {
           setLocalMode(!localMode)
         }}>toggle</button>
       </div>
@@ -29,8 +29,9 @@ const IndexPage = () => {
           images.map((src, index) => {
             return (
               <RouterFly
+                keepAlive={true}
                 key={index}
-                port={String(index)+'routerfly'}
+                port={String(index) + 'routerfly'}
                 className={localMode ? 'aspect-16/9' : 'aspect-1/1 m2'}
                 transition-all duration-800
                 onClick={(e: SyntheticEvent) => {
