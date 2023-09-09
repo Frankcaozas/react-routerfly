@@ -1,4 +1,5 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, createContext, useState } from 'react'
+
 
 export function createRouterFlyContext() {
   const [metadata, setMetadata] = useState<any>([])
@@ -25,3 +26,7 @@ export function createRouterFlyContext() {
   }
 }
 export type RouterFlyContext = ReturnType<typeof createRouterFlyContext>
+
+export const routerFlyContext = createContext<RouterFlyContext>(
+  {} as RouterFlyContext
+)

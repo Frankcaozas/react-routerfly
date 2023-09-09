@@ -2,8 +2,7 @@ import { CSSProperties, ReactNode, memo, useContext, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useRect } from '../hooks/useRect';
 import KeepAlive from './KeepAlive/KeepAlive';
-import { routerFlyContext } from './RouterFlyCarrier';
-import { RouterFlyContext } from '../context';
+import { routerFlyContext } from '../context';
 
 // interface RouterFlyCraftProps {
 //   port: string,

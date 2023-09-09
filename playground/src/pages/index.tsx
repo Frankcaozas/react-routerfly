@@ -1,7 +1,7 @@
 import { SyntheticEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { useLocalStorage } from 'react-use';
-import { RouterFly } from '../../../src/';
+import { RouterFly } from '../../../src';
 import MyComponent from '../components/MyComponent';
 import { images } from '../data';
 const IndexPage = () => {

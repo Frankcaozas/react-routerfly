@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { images } from '../data';
 
 const MyComponent = ({ index, className }: { index: number, className?: string }) => {

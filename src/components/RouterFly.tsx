@@ -1,5 +1,5 @@
 import { ReactNode, memo, useContext, useEffect, useRef } from 'react';
-import { routerFlyContext } from './RouterFlyCarrier';
+import { routerFlyContext } from '../context';
 interface RouterFlyProps {
   children: ReactNode,
   keepAlive?: boolean
@@ -22,7 +22,7 @@ export const RouterFly: React.FC<RouterFlyProps> = memo((props) => {
         return { ...pre, [port]: { children, port, keepAlive } }
       })
     }
-    setMetadata((pre) => {
+    setMetadata((pre: any) => {
       return { ...pre, [port]: attr }
     })
     setPrxyEl((pre) => {
