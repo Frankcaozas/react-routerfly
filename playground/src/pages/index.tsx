@@ -14,17 +14,17 @@ const IndexPage = () => {
 
   return (
     <div items-center>
-      <h1>Shared React component across routes with animations </h1>
+      <h1 text-xl font-mono>Shared React component across routes with animations </h1>
 
-      <div p2 flex="~ gap-2" justify-center>
+      <div p2 flex="~ gap-2" justify-center my-5>
         <button btn onClick={goNone} >go none</button>
         <button btn onClick={() => {
           setLocalMode(!localMode)
         }}>toggle</button>
       </div>
-      <h1>click the img or the number </h1>
+      <h1 font-mono>click the img or the number </h1>
 
-      <div id="gallery" grid="~ cols-1 sm:cols-2 md:cols-3 lg:cols-4 xl:cols-6" px-10 justify-center>
+      <div id="gallery" grid="~ cols-1 sm:cols-2 md:cols-3 lg:cols-4 xl:cols-6" px-10 justify-center mt-5>
         {
           images.map((src, index) => {
             return (

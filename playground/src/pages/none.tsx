@@ -7,9 +7,9 @@ const None = () => {
   }
 
   return (
-    <div   >
-      <h1>none page</h1>
-      <button btn
+    <div>
+      <h1 py-5>none page</h1>
+      <button btn 
         onClick={back}>
         back
       </button>
