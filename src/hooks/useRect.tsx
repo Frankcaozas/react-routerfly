@@ -7,6 +7,8 @@ type RectResult = {
   right: number;
   top: number;
   width: number;
+  marginLeft: number;
+  marginTop: number
 };
 
 function getRect<T extends HTMLElement>(element?: T): RectResult {
@@ -16,9 +18,17 @@ function getRect<T extends HTMLElement>(element?: T): RectResult {
     left: 0,
     right: 0,
     top: 0,
-    width: 0
+    width: 0,
+    marginLeft: 0,
+    marginTop: 0
   };
-  if (element) rect = element.getBoundingClientRect();
+  if (element) {
+    const { left, top, width, height, bottom, right } = element.getBoundingClientRect()
+    const domStyle = window.getComputedStyle(element)
+    const marginTop = domStyle.marginTop
+    const marginLeft = domStyle.marginLeft
+    Object.assign(rect, {left, top, width, height, bottom, right, marginLeft, marginTop})
+  }
   return rect;
 }
 
@@ -26,7 +36,7 @@ export function useRect<T extends HTMLElement>(
   ref: HTMLElement | null
 ): RectResult {
   const [rect, setRect] = useState<RectResult>(
-      ref ? getRect(ref) : getRect()
+    ref ? getRect(ref) : getRect()
   );
 
   const handleResize = useCallback(() => {

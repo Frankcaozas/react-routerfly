@@ -33,10 +33,11 @@ export const RouterFlyCraft = memo((props: {
     let style: CSSProperties = {
       position: 'absolute',
       zIndex: 999,
-      left: (rect?.left ?? 0) + scrollLeft + 'px',
-      top: (rect?.top ?? 0) + scrollTop + 'px',
+      left: 0,
+      top: 0,
       width: `${rect?.width}px`,
       height: `${rect?.height}px`,
+      transform: `translate3d(calc(${rect.left}px - ${rect.marginLeft}),calc(${rect.top}px - ${rect.marginTop}),0px)`,
     }
     if (!rect || !proxyEl[port]) {
       style = {

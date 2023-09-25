@@ -33,7 +33,7 @@ const IndexPage = () => {
                 key={index}
                 port={String(index) + 'routerfly'}
                 className={localMode ? 'aspect-16/9' : 'aspect-1/1 m2'}
-                transition-all duration-800
+                transition-all duration-800 m-1
                 onClick={(e: SyntheticEvent) => {
                   e.preventDefault()
                   navigate('/' + index)
